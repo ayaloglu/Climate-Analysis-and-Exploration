@@ -28,7 +28,13 @@ Station = Base.classes.station
 @app.route("/")
 def home():
     print("Server received request for 'Home' page...")
-    return "Welcome to my 'Home' page!"
+    return("Welcome to my 'Home' page! <br/>"
+           f"Available Routes:<br/>"
+           f"/api/v1.0/precipitation <br/>"
+           f"/api/v1.0/stations <br/>"
+           f"/api/v1.0/tobs <br/>"
+           f"/api/v1.0/start <br/>"
+           f"/api/v1.0//api/v1.0/start/end")
 
 
 @app.route("/api/v1.0/precipitation")
@@ -40,10 +46,9 @@ def precipitation():
     one_year_ago = dt.date(2017, 8, 23) - dt.timedelta(days=365)
     last_year = session.query(Measurement.date, Measurement.prcp).\
         filter(Measurement.date > one_year_ago).all()
-    last_year_df = pd.DataFrame(last_year)
-    last_year_df = last_year_df.set_index(0)
+    last_year_df = pd.DataFrame(last_year, columns=["Date", "precipitation"])
+    last_year_df = last_year_df.set_index("Date")
     last_year_df.sort_index()
-    last_year_df = last_year_df.rename(columns={1: "Precipitation"})
 
     last_year_dict = last_year_df.to_dict()
     session.close()
