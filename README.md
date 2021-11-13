@@ -11,4 +11,6 @@ Link Python to the database by creating an SQLAlchemy session.
 
 Do precipitation and station analysis.
 
-I added the routes to the landing page. 
+Design a Flask API 
+
+Add the routes to the landing page. 
