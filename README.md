@@ -1,7 +1,7 @@
 # Climate-Analysis-and-Exploration
 This code uses Python and SQLAlchemy to do climate analysis and data exploration.
 
-Use hawaii.sqlite file to 
+Use hawaii.sqlite file 
 
 Use SQLAlchemy create_engine to connect to your sqlite database.
 
